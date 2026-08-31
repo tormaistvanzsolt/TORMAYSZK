@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tormay Béla Szakkollégium - Átirányítás...</title>
+    <!-- Modern betűtípus betöltése (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F4F0E6; /* A poszter bézs háttere */
+            color: #1A4D2E; /* A szakkollégium zöld színe */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* Logó formázása és animációja */
+        .logo {
+            width: 180px; /* Logó mérete */
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 50%; /* Kör alakúra vágja, ha fekete kerete lenne */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Pici árnyék */
+            animation: pulse 2s infinite ease-in-out; /* Animáció meghívása */
+        }
+
+        /* Pulzáló animáció definiálása */
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(0.95); }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        #counter {
+            font-size: 5rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        p {
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        a {
+            color: #1A4D2E;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- A logó beillesztése -->
+    <img src="item_24249-451142012-removebg-preview.jpg" alt="Tormay Béla Szakkollégium Logó" class="logo">
+
+    <h1>Hamarosan átirányítunk a jelentkezési felületre...</h1>
+    <div id="counter">5</div>
+    <p>Ha az átirányítás nem indul el automatikusan, <a href="https://szakkollegiumok.unideb.hu/node/399" id="manual-link">kattints ide</a>.</p>
+
+    <script>
+        // A megadott DE Szakkollégiumi link
+        const targetUrl = "https://szakkollegiumok.unideb.hu/node/399"; 
+        
+        let count = 5; // Másodpercek száma
+        const counterElement = document.getElementById('counter');
+        
+        // A manuális kattintás linkjének beállítása
+        document.getElementById('manual-link').href = targetUrl;
+
+        // Visszaszámláló logika
+        const timer = setInterval(() => {
+            count--;
+            counterElement.innerText = count;
+            
+            if (count <= 0) {
+                clearInterval(timer);
+                window.location.href = targetUrl; // Átirányítás
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
